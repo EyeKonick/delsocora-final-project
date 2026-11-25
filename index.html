@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Villy Joe Delsocora — designs it, then builds it</title>
+  <meta name="description" content="Personal site of Villy Joe Delsocora, a student front-end developer and designer from the Philippines who works with Figma, Laravel, React, Next.js and Tailwind CSS." />
+  <meta name="theme-color" content="#f4efe6" />
+  <meta property="og:title" content="Villy Joe Delsocora" />
+  <meta property="og:description" content="I design interfaces in Figma, then build them for real." />
+  <meta property="og:image" content="images/vjd-portrait.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Caveat:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css" />
+
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper:  '#f4efe6',
+            card:   '#fbf8f2',
+            line:   '#ddd5c6',
+            ink:    '#1d1b18',
+            pencil: '#6a6458',
+            marker: '#d9481c',
+            hi:     '#ffe27a',
+          },
+          fontFamily: {
+            sans:    ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            display: ['"Bricolage Grotesque"', 'Inter', 'sans-serif'],
+            hand:    ['Caveat', 'cursive'],
+            mono:    ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    :root { color-scheme: light; }
+    body { background: #f4efe6; }
+    ::selection { background: #ffe27a; color: #1d1b18; }
+    :focus-visible { outline: 2px solid #d9481c; outline-offset: 3px; border-radius: 6px; }
+
+    .dots {
+      background-image: radial-gradient(rgba(29,27,24,.09) 1px, transparent 1.2px);
+      background-size: 22px 22px;
+    }
+
+    .hl { background: linear-gradient(transparent 58%, #ffe27a 58%, #ffe27a 92%, transparent 92%); padding: 0 .08em; }
+
+    .draw { background: linear-gradient(currentColor, currentColor) left bottom / 0 1.5px no-repeat; transition: background-size .4s cubic-bezier(.16,1,.3,1); }
+    .draw:hover { background-size: 100% 1.5px; }
+
+    .tape::before, .tape::after {
+      content: ""; position: absolute; top: -14px; width: 92px; height: 28px;
+      background: rgba(255, 226, 122, .7); box-shadow: 0 1px 2px rgba(0,0,0,.08);
+    }
+    .tape::before { left: 18px; transform: rotate(-6deg); }
+    .tape::after  { right: 18px; transform: rotate(5deg); }
+
+    .icon-tile {
+      display: grid; place-items: center; width: 3rem; height: 3rem;
+      border-radius: .875rem; font-size: 1.6rem; color: #d9481c;
+      background: #fbf8f2; border: 1px solid #ddd5c6;
+      box-shadow: 0 2px 0 #ddd5c6;
+      transition: transform .35s cubic-bezier(.16,1,.3,1), background-color .35s, color .35s, border-color .35s, box-shadow .35s;
+    }
+    .lift:hover .icon-tile { transform: rotate(-6deg) scale(1.05); background: #d9481c; color: #fbf8f2; border-color: #1d1b18; box-shadow: 0 2px 0 #1d1b18; }
+
+    @keyframes rise { from { opacity: 0; transform: translateY(18px); } }
+    .rise { animation: rise .9s cubic-bezier(.16,1,.3,1) both; }
+
+    .lift { transition: transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s; }
+    .lift:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -18px rgba(29,27,24,.35); }
+
+    .btn { transition: transform .2s, background-color .2s, color .2s, box-shadow .2s; }
+    .btn:hover  { transform: translateY(-1px); }
+    .btn:active { transform: translateY(1px); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body class="dots font-sans text-ink antialiased">
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-paper">Skip to content</a>
+
+  <header class="sticky top-0 z-50 border-b border-line/70 bg-paper/85 backdrop-blur-md">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-3 sm:px-8">
+      <a href="#top" class="font-hand text-3xl font-bold leading-none text-ink transition hover:text-marker" aria-label="Villy Joe Delsocora, back to top">vjd<span class="text-marker">.</span></a>
+
+      <ul class="hidden items-center gap-7 text-[15px] text-pencil md:flex">
+        <li><a href="#now" class="draw py-1 hover:text-ink">Now</a></li>
+        <li><a href="#work" class="draw py-1 hover:text-ink">Projects</a></li>
+        <li><a href="#toolbox" class="draw py-1 hover:text-ink">Toolbox</a></li>
+        <li><a href="#journey" class="draw py-1 hover:text-ink">Journey</a></li>
+      </ul>
+
+      <div class="flex items-center gap-4">
+        <p class="hidden font-mono text-xs text-pencil lg:block"><span aria-hidden="true">🇵🇭</span> <span data-clock>--:--</span> here</p>
+        <a href="#hello" class="btn rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-paper hover:bg-marker">Say hi</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section id="top" class="mx-auto grid min-h-[calc(100svh-61px)] max-w-6xl items-center gap-14 px-5 py-14 sm:px-8 lg:grid-cols-12 lg:gap-10">
+      <div class="lg:col-span-7">
+        <p class="rise mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-card px-3 py-1.5 text-sm text-pencil">
+          <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+          Open to internships &amp; small freelance jobs
+        </p>
+
+        <h1 class="rise font-display text-[clamp(2.6rem,6.4vw,5.2rem)] font-bold leading-[0.98] tracking-[-0.035em]" style="animation-delay:.06s">
+          Hi, I'm Villy Joe.<br />
+          I design it, <span class="hl">then I build it.</span>
+        </h1>
+
+        <p class="rise mt-7 max-w-xl text-lg leading-relaxed text-pencil" style="animation-delay:.14s">
+          I'm a student developer from the Philippines. I sketch screens in Figma first, then turn them into real, working websites with
+          <span class="text-ink">Laravel, React, Next.js and Tailwind CSS</span>. Started with one "Hello, World" in 2021 and never stopped.
+        </p>
+
+        <div class="rise mt-9 flex flex-wrap items-center gap-x-6 gap-y-4" style="animation-delay:.22s">
+          <a href="#work" class="btn inline-flex items-center gap-2 rounded-full bg-marker px-6 py-3.5 font-medium text-white shadow-[0_3px_0_#1d1b18] hover:shadow-[0_4px_0_#1d1b18] active:shadow-[0_1px_0_#1d1b18]">
+            See what I've built
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#hello" class="draw py-1 font-medium">Send me a message</a>
+        </div>
+      </div>
+
+      <div class="rise relative mx-auto w-full max-w-[360px] lg:col-span-5 lg:ml-auto" style="animation-delay:.18s">
+        <figure class="tape group relative rounded-sm bg-white p-3 pb-14 shadow-[0_24px_50px_-24px_rgba(29,27,24,.45)]">
+          <div class="overflow-hidden">
+            <img src="images/vjd-portrait.jpg" width="960" height="1280"
+                 alt="Villy Joe Delsocora holding a handwritten sign that says VJD, 20, Male"
+                 class="aspect-[3/4] w-full object-cover transition duration-700 ease-out group-hover:scale-[1.03]" />
+          </div>
+          <p class="absolute bottom-3 left-0 right-0 text-center font-hand text-2xl text-pencil" aria-hidden="true">me, 2021 — the year it started</p>
+        </figure>
+      </div>
+    </section>
+
+    <section id="now" class="border-y border-line bg-card/70">
+      <div class="mx-auto grid max-w-6xl gap-12 px-5 py-24 sm:px-8 lg:grid-cols-12">
+        <div class="lg:col-span-4">
+          <p class="font-hand text-2xl text-marker">what I'm doing</p>
+          <h2 class="mt-1 font-display text-4xl font-bold tracking-tight sm:text-5xl">Right now</h2>
+          <p class="mt-5 max-w-xs text-pencil">A small, honest list. I update it when things change.</p>
+        </div>
+
+        <ul class="grid gap-4 sm:grid-cols-2 lg:col-span-8">
+          <li class="lift rounded-2xl border border-line bg-paper p-6">
+            <span class="icon-tile" aria-hidden="true"><i class="ph-duotone ph-graduation-cap"></i></span>
+            <h3 class="mt-4 font-display text-xl font-semibold">Finishing my finals</h3>
+            <p class="mt-2 text-pencil">This site is part of it. Built by hand with HTML and Tailwind, no template.</p>
+          </li>
+          <li class="lift rounded-2xl border border-line bg-paper p-6">
+            <span class="icon-tile" aria-hidden="true"><i class="ph-duotone ph-stack"></i></span>
+            <h3 class="mt-4 font-display text-xl font-semibold">Going deeper on Next.js</h3>
+            <p class="mt-2 text-pencil">Server components, routing and data fetching, learned by rebuilding my old projects.</p>
+          </li>
+          <li class="lift rounded-2xl border border-line bg-paper p-6">
+            <span class="icon-tile" aria-hidden="true"><i class="ph-duotone ph-pen-nib"></i></span>
+            <h3 class="mt-4 font-display text-xl font-semibold">Designing before coding</h3>
+            <p class="mt-2 text-pencil">Every project starts as a Figma frame. It saves me hours of guessing later.</p>
+          </li>
+          <li class="lift rounded-2xl border border-line bg-paper p-6">
+            <span class="icon-tile" aria-hidden="true"><i class="ph-duotone ph-handshake"></i></span>
+            <h3 class="mt-4 font-display text-xl font-semibold">Looking for a team</h3>
+            <p class="mt-2 text-pencil">An internship where I can ship real things and learn from people better than me.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="work" class="mx-auto max-w-6xl px-5 py-24 sm:px-8">
+      <div class="mb-14 max-w-2xl">
+        <p class="font-hand text-2xl text-marker">things I've made</p>
+        <h2 class="mt-1 font-display text-4xl font-bold tracking-tight sm:text-5xl">Projects I'm proud of</h2>
+        <p class="mt-5 text-lg text-pencil">Some for class, some just to see if I could. Each one taught me something I still use.</p>
+      </div>
+
+      <div class="space-y-20">
+        <article class="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
+          <a href="#" class="lift group relative block overflow-hidden rounded-2xl border border-line bg-[#2a1a0a] lg:col-span-7" aria-label="Open Kusina, restaurant ordering">
+            <div class="aspect-[16/11] p-6 transition duration-700 ease-out group-hover:scale-[1.02] sm:p-8">
+              <div class="flex h-full flex-col rounded-xl bg-[#fff7ec] p-5 text-[#2a1a0a] shadow-2xl shadow-black/40">
+                <div class="mb-5 flex items-center justify-between">
+                  <span class="font-display text-2xl font-bold">Kusina</span>
+                  <span class="rounded-full bg-[#2a1a0a] px-3 py-1 text-[10px] text-[#fff7ec]">Cart · 3</span>
+                </div>
+                <div class="grid grid-cols-3 gap-3">
+                  <div class="rounded-lg bg-[#f4c98b] p-3"><div class="mb-6 h-9 w-9 rounded-full bg-[#d9772b]"></div><p class="text-[11px] font-semibold">Adobo</p><p class="text-[10px] opacity-60">₱145</p></div>
+                  <div class="rounded-lg bg-[#f6dcb5] p-3"><div class="mb-6 h-9 w-9 rounded-full bg-[#a8551d]"></div><p class="text-[11px] font-semibold">Sinigang</p><p class="text-[10px] opacity-60">₱160</p></div>
+                  <div class="rounded-lg bg-[#efe1cb] p-3"><div class="mb-6 h-9 w-9 rounded-full bg-[#6b3a14]"></div><p class="text-[11px] font-semibold">Kare-kare</p><p class="text-[10px] opacity-60">₱210</p></div>
+                </div>
+                <div class="mt-auto flex items-center justify-between rounded-lg border border-[#2a1a0a]/10 p-3 text-[11px]"><span>3 items · Table 4</span><span class="font-semibold">₱515</span></div>
+                <div class="mt-3 grid h-9 place-items-center rounded-lg bg-[#d9772b] text-[11px] font-semibold text-[#fff7ec]">Place order</div>
+              </div>
+            </div>
+          </a>
+          <div class="lg:col-span-5">
+            <p class="font-mono text-sm text-marker">01</p>
+            <h3 class="mt-2 font-display text-3xl font-bold tracking-tight">Kusina</h3>
+            <p class="mt-1 text-pencil">Ordering for a small Filipino restaurant</p>
+            <p class="mt-5 leading-relaxed">Customers pick dishes from their table and send the order straight to the kitchen. My first full Laravel app, with menus, carts and an admin side for the staff.</p>
+            <ul class="mt-6 flex flex-wrap gap-2 font-mono text-xs">
+              <li class="rounded-full border border-line bg-card px-3 py-1">Laravel</li>
+              <li class="rounded-full border border-line bg-card px-3 py-1">Blade</li>
+              <li class="rounded-full border border-line bg-card px-3 py-1">Tailwind</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
+          <a href="#" class="lift group relative block overflow-hidden rounded-2xl border border-line bg-[#0d1512] lg:order-2 lg:col-span-7" aria-label="Open Pulse, sales dashboard">
+            <div class="aspect-[16/11] p-6 transition duration-700 ease-out group-hover:scale-[1.02] sm:p-8">
+              <div class="flex h-full flex-col rounded-xl border border-white/10 bg-[#111a17] p-5">
+                <p class="font-mono text-[10px] text-emerald-300/70">Revenue · last 12 weeks</p>
+                <p class="mt-1 text-3xl font-medium text-emerald-50">₱482,190</p>
+                <div class="mt-auto flex h-1/2 items-end gap-2">
+                  <div class="h-[35%] flex-1 rounded-t bg-emerald-400/30"></div>
+                  <div class="h-[50%] flex-1 rounded-t bg-emerald-400/30"></div>
+                  <div class="h-[42%] flex-1 rounded-t bg-emerald-400/30"></div>
+                  <div class="h-[64%] flex-1 rounded-t bg-emerald-400/40"></div>
+                  <div class="h-[58%] flex-1 rounded-t bg-emerald-400/40"></div>
+                  <div class="h-[78%] flex-1 rounded-t bg-emerald-400/60"></div>
+                  <div class="h-[92%] flex-1 rounded-t bg-emerald-400"></div>
+                </div>
+              </div>
+            </div>
+          </a>
+          <div class="lg:order-1 lg:col-span-5">
+            <p class="font-mono text-sm text-marker">02</p>
+            <h3 class="mt-2 font-display text-3xl font-bold tracking-tight">Pulse</h3>
+            <p class="mt-1 text-pencil">A sales dashboard you can read in five seconds</p>
+            <p class="mt-5 leading-relaxed">I wanted one number and one chart to say everything. Built in Next.js, where I learned that cutting things out is most of the design work.</p>
+            <ul class="mt-6 flex flex-wrap gap-2 font-mono text-xs">
+              <li class="rounded-full border border-line bg-card px-3 py-1">Next.js</li>
+              <li class="rounded-full border border-line bg-card px-3 py-1">Charts</li>
+              <li class="rounded-full border border-line bg-card px-3 py-1">Tailwind</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
+          <a href="#" class="lift group relative block overflow-hidden rounded-2xl border border-line bg-[#e9e6df] lg:col-span-7" aria-label="Open Lumen, photographer site">
+            <div class="flex aspect-[16/11] flex-col justify-between p-7 text-[#111] transition duration-700 ease-out group-hover:scale-[1.02] sm:p-9">
+              <div class="flex justify-between font-mono text-[10px] uppercase tracking-widest"><span>Lumen</span><span>Index · Info</span></div>
+              <p class="font-display text-5xl font-semibold leading-none tracking-tight sm:text-6xl">Light,<br /><span class="font-normal">kept still.</span></p>
+              <div class="grid grid-cols-4 gap-2">
+                <div class="aspect-square bg-[#c9c2b4]"></div><div class="aspect-square bg-[#8f8676]"></div><div class="aspect-square bg-[#5b5347]"></div><div class="aspect-square bg-[#2d2924]"></div>
+              </div>
+            </div>
+          </a>
+          <div class="lg:col-span-5">
+            <p class="font-mono text-sm text-marker">03</p>
+            <h3 class="mt-2 font-display text-3xl font-bold tracking-tight">Lumen</h3>
+            <p class="mt-1 text-pencil">A quiet website for a photographer</p>
+            <p class="mt-5 leading-relaxed">Big type, lots of space, and the photos do the talking. Designed in Figma first, then built in React with a gallery that loads fast on mobile data.</p>
+            <ul class="mt-6 flex flex-wrap gap-2 font-mono text-xs">
+              <li class="rounded-full border border-line bg-card px-3 py-1">Figma</li>
+              <li class="rounded-full border border-line bg-card px-3 py-1">React</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
+          <a href="#" class="lift group relative block overflow-hidden rounded-2xl border border-line bg-[#0f1b24] lg:order-2 lg:col-span-7" aria-label="Open Tala, notes for students">
+            <div class="aspect-[16/11] p-6 transition duration-700 ease-out group-hover:scale-[1.02] sm:p-8">
+              <div class="grid h-full grid-cols-3 overflow-hidden rounded-xl border border-white/10 bg-[#152431]">
+                <div class="space-y-2 border-r border-white/10 p-4">
+                  <div class="mb-4 h-3 w-16 rounded bg-sky-300/80"></div>
+                  <div class="h-8 rounded-md bg-sky-400/20"></div>
+                  <div class="h-8 rounded-md bg-white/5"></div>
+                  <div class="h-8 rounded-md bg-white/5"></div>
+                  <div class="h-8 rounded-md bg-white/5"></div>
+                </div>
+                <div class="col-span-2 space-y-3 p-5">
+                  <p class="text-lg font-medium text-sky-50">Thesis notes</p>
+                  <div class="h-2 w-full rounded bg-white/10"></div>
+                  <div class="h-2 w-11/12 rounded bg-white/10"></div>
+                  <div class="h-2 w-4/5 rounded bg-white/10"></div>
+                  <div class="mt-5 rounded-lg border border-sky-300/30 bg-sky-400/10 p-3 font-mono text-[10px] text-sky-200">const done = tasks.filter(t =&gt; t.ok)</div>
+                  <div class="h-2 w-3/5 rounded bg-white/10"></div>
+                </div>
+              </div>
+            </div>
+          </a>
+          <div class="lg:order-1 lg:col-span-5">
+            <p class="font-mono text-sm text-marker">04</p>
+            <h3 class="mt-2 font-display text-3xl font-bold tracking-tight">Tala</h3>
+            <p class="mt-1 text-pencil">Notes for students, made by a student</p>
+            <p class="mt-5 leading-relaxed">I made this for myself during thesis season. Notes, code snippets and to-dos in one place, saved in the browser so it works even when the Wi-Fi doesn't.</p>
+            <ul class="mt-6 flex flex-wrap gap-2 font-mono text-xs">
+              <li class="rounded-full border border-line bg-card px-3 py-1">React</li>
+              <li class="rounded-full border border-line bg-card px-3 py-1">Local storage</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="toolbox" class="border-y border-line bg-ink text-paper">
+      <div class="mx-auto grid max-w-6xl gap-12 px-5 py-24 sm:px-8 lg:grid-cols-12">
+        <div class="lg:col-span-4">
+          <p class="font-hand text-2xl text-hi">what's in my bag</p>
+          <h2 class="mt-1 font-display text-4xl font-bold tracking-tight sm:text-5xl">My toolbox</h2>
+          <p class="mt-5 max-w-xs text-paper/70">What I open almost every day, from the first sketch to the last hover state.</p>
+        </div>
+
+        <ul class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:col-span-8">
+          <li class="lift flex items-center gap-4 rounded-2xl bg-white/[.06] p-5 ring-1 ring-white/10 hover:bg-white/[.1]">
+            <img src="https://cdn.simpleicons.org/figma" alt="" width="32" height="32" class="h-8 w-8" />
+            <div><p class="font-medium">Figma</p><p class="font-mono text-xs text-paper/60">Where it starts</p></div>
+          </li>
+          <li class="lift flex items-center gap-4 rounded-2xl bg-white/[.06] p-5 ring-1 ring-white/10 hover:bg-white/[.1]">
+            <img src="https://cdn.simpleicons.org/html5" alt="" width="32" height="32" class="h-8 w-8" />
+            <div><p class="font-medium">HTML &amp; CSS</p><p class="font-mono text-xs text-paper/60">The basics</p></div>
+          </li>
+          <li class="lift flex items-center gap-4 rounded-2xl bg-white/[.06] p-5 ring-1 ring-white/10 hover:bg-white/[.1]">
+            <img src="https://cdn.simpleicons.org/tailwindcss" alt="" width="32" height="32" class="h-8 w-8" />
+            <div><p class="font-medium">Tailwind</p><p class="font-mono text-xs text-paper/60">Styling</p></div>
+          </li>
+          <li class="lift flex items-center gap-4 rounded-2xl bg-white/[.06] p-5 ring-1 ring-white/10 hover:bg-white/[.1]">
+            <img src="https://cdn.simpleicons.org/react" alt="" width="32" height="32" class="h-8 w-8" />
+            <div><p class="font-medium">React</p><p class="font-mono text-xs text-paper/60">Interfaces</p></div>
+          </li>
+          <li class="lift flex items-center gap-4 rounded-2xl bg-white/[.06] p-5 ring-1 ring-white/10 hover:bg-white/[.1]">
+            <img src="https://cdn.simpleicons.org/nextdotjs/ffffff" alt="" width="32" height="32" class="h-8 w-8" />
+            <div><p class="font-medium">Next.js</p><p class="font-mono text-xs text-paper/60">Learning deeper</p></div>
+          </li>
+          <li class="lift flex items-center gap-4 rounded-2xl bg-white/[.06] p-5 ring-1 ring-white/10 hover:bg-white/[.1]">
+            <img src="https://cdn.simpleicons.org/laravel" alt="" width="32" height="32" class="h-8 w-8" />
+            <div><p class="font-medium">Laravel</p><p class="font-mono text-xs text-paper/60">Back-end</p></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="journey" class="mx-auto grid max-w-6xl gap-16 px-5 py-24 sm:px-8 lg:grid-cols-12">
+      <div class="lg:col-span-6">
+        <p class="font-hand text-2xl text-marker">how I got here</p>
+        <h2 class="mt-1 font-display text-4xl font-bold tracking-tight sm:text-5xl">My journey so far</h2>
+
+        <ol class="relative mt-10 space-y-9 border-l-2 border-dashed border-line pl-8">
+          <li class="relative">
+            <span class="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-4 border-paper bg-marker"></span>
+            <p class="font-mono text-xs text-pencil">2024 — now</p>
+            <h3 class="mt-1 font-display text-xl font-semibold">Freelance front-end work</h3>
+            <p class="mt-1 text-pencil">Websites and small web apps for local businesses.</p>
+          </li>
+          <li class="relative">
+            <span class="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-4 border-paper bg-ink"></span>
+            <p class="font-mono text-xs text-pencil">2023 — 2024</p>
+            <h3 class="mt-1 font-display text-xl font-semibold">UI/UX designer, capstone team</h3>
+            <p class="mt-1 text-pencil">Led our design system and every Figma prototype.</p>
+          </li>
+          <li class="relative">
+            <span class="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-4 border-paper bg-ink"></span>
+            <p class="font-mono text-xs text-pencil">2022 — 2023</p>
+            <h3 class="mt-1 font-display text-xl font-semibold">Web development intern</h3>
+            <p class="mt-1 text-pencil">Built Laravel admin panels and Blade templates.</p>
+          </li>
+          <li class="relative">
+            <span class="absolute -left-[41px] top-1 h-4 w-4 rounded-full border-4 border-paper bg-ink"></span>
+            <p class="font-mono text-xs text-pencil">2021</p>
+            <h3 class="mt-1 font-display text-xl font-semibold">My first "Hello, World"</h3>
+            <p class="mt-1 text-pencil">HTML, CSS and a lot of curiosity. <span class="font-hand text-xl text-marker">same year as that photo ↑</span></p>
+          </li>
+        </ol>
+      </div>
+
+      <div class="lg:col-span-6">
+        <p class="font-hand text-2xl text-marker">how I work</p>
+        <h2 class="mt-1 font-display text-4xl font-bold tracking-tight sm:text-5xl">Four steps, every time</h2>
+
+        <ol class="mt-10 space-y-4">
+          <li class="lift flex gap-5 rounded-2xl border border-line bg-card p-6">
+            <span class="font-hand text-4xl font-bold leading-none text-marker">1</span>
+            <div><h3 class="font-display text-lg font-semibold">Listen first</h3><p class="mt-1 text-pencil">What's the goal, who's it for, and when is it due.</p></div>
+          </li>
+          <li class="lift flex gap-5 rounded-2xl border border-line bg-card p-6">
+            <span class="font-hand text-4xl font-bold leading-none text-marker">2</span>
+            <div><h3 class="font-display text-lg font-semibold">Sketch in Figma</h3><p class="mt-1 text-pencil">Wireframes, then a prototype you can click before any code.</p></div>
+          </li>
+          <li class="lift flex gap-5 rounded-2xl border border-line bg-card p-6">
+            <span class="font-hand text-4xl font-bold leading-none text-marker">3</span>
+            <div><h3 class="font-display text-lg font-semibold">Build it properly</h3><p class="mt-1 text-pencil">Responsive, accessible, and tested on real phones.</p></div>
+          </li>
+          <li class="lift flex gap-5 rounded-2xl border border-line bg-card p-6">
+            <span class="font-hand text-4xl font-bold leading-none text-marker">4</span>
+            <div><h3 class="font-display text-lg font-semibold">Ship and hand over</h3><p class="mt-1 text-pencil">Deployed, documented, and yours to keep.</p></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="hello" class="border-t border-line bg-card/70">
+      <div class="mx-auto max-w-6xl px-5 py-28 sm:px-8">
+        <p class="font-hand text-3xl text-marker">psst —</p>
+        <h2 class="mt-2 max-w-4xl font-display text-[clamp(2.6rem,7vw,5.6rem)] font-bold leading-[0.98] tracking-[-0.035em]">
+          Got an idea, an internship, or just want to <span class="hl">say hi?</span>
+        </h2>
+        <p class="mt-7 max-w-xl text-lg text-pencil">I read every message and usually reply within a day. Tell me what you're making and I'll tell you how I can help.</p>
+
+        <div class="mt-10 flex flex-wrap items-center gap-4">
+          <a href="mailto:hello@example.com" class="btn inline-flex items-center gap-3 rounded-full bg-ink px-7 py-4 text-lg font-medium text-paper hover:bg-marker">
+            hello@example.com
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <button type="button" data-copy="hello@example.com" class="btn rounded-full border border-line bg-paper px-5 py-4 text-sm font-medium hover:border-ink">
+            <span data-copy-label>Copy email</span>
+          </button>
+        </div>
+
+        <ul class="mt-12 flex flex-wrap gap-3">
+          <li><a href="#" class="btn inline-flex items-center gap-2.5 rounded-full border border-line bg-paper px-4 py-2.5 text-sm hover:border-ink"><img src="https://cdn.simpleicons.org/github/1d1b18" alt="" class="h-4 w-4" /> GitHub</a></li>
+          <li><a href="#" class="btn inline-flex items-center gap-2.5 rounded-full border border-line bg-paper px-4 py-2.5 text-sm hover:border-ink"><img src="https://cdn.simpleicons.org/dribbble" alt="" class="h-4 w-4" /> Dribbble</a></li>
+          <li><a href="#" class="btn inline-flex items-center gap-2.5 rounded-full border border-line bg-paper px-4 py-2.5 text-sm hover:border-ink"><img src="https://cdn.simpleicons.org/behance" alt="" class="h-4 w-4" /> Behance</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-ink text-paper">
+    <div class="mx-auto max-w-6xl px-5 pt-16 sm:px-8">
+      <p class="select-none font-display text-[15vw] font-extrabold leading-[0.8] tracking-[-0.05em] text-white/[.08] transition duration-700 hover:text-marker lg:text-[10.5rem]" aria-hidden="true">Delsocora</p>
+      <div class="mt-10 flex flex-col justify-between gap-3 border-t border-white/10 py-6 text-sm text-paper/60 sm:flex-row">
+        <p>© 2026 Villy Joe Delsocora · made by hand in the Philippines</p>
+        <p class="font-mono text-xs">It's <span data-clock>--:--</span> for me right now · <a href="#top" class="draw text-paper">back to top ↑</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function tick() {
+      const t = new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Manila', hour: 'numeric', minute: '2-digit' });
+      document.querySelectorAll('[data-clock]').forEach(el => el.textContent = t);
+    }
+
+    tick();
+    setInterval(tick, 30000);
+
+    document.querySelectorAll('[data-copy]').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const label = btn.querySelector('[data-copy-label]');
+        try { await navigator.clipboard.writeText(btn.dataset.copy); label.textContent = 'Copied ✓'; }
+        catch { label.textContent = 'Press Ctrl+C'; }
+        setTimeout(() => label.textContent = 'Copy email', 2000);
+      });
+    });
+  </script>
+</body>
+</html>
